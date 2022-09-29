@@ -37,6 +37,7 @@ let sanFranAirport =
 // Grabbing our GeoJSON data.
 L.geoJSON(sanFranAirport, {
     // We turn each feature into a marker on the map.
+    // uses the pointToLayer to add data to a marker
     pointToLayer: function(feature, latlng) {
       console.log(feature);
       return L.marker(latlng)
@@ -44,6 +45,17 @@ L.geoJSON(sanFranAirport, {
         "<h4>" + feature.properties.city +", "  + feature.properties.country + "</h4>")
     }
   }).addTo(map);
+
+// // Grabbing our GeoJSON data.
+// L.geoJSON(sanFranAirport, {
+//   // We turn each feature into a marker on the map.
+//   // uses the onEachFeature to add data to a markers
+//   onEachFeature: function(feature, layer) {
+//     console.log(layer);
+//     layer.bindPopup("<h2>" + feature.properties.name + "</h4><hr>" +
+//       "<h4>" + feature.properties.city +", "  + feature.properties.country + "</h4>");
+//   }
+// }).addTo(map);
 
 
 // We create the tile layer that will be the background of our map.
