@@ -31,15 +31,17 @@ d3.json(airportData).then(function(data) {
     console.log(data);
     
     
-    // // trying to add data to markers. Doesn't like something 
-    // L.geoJSON(airportData, {
-    // pointToLayer: function(feature, latlng) {
-    //     console.log(feature);
-    //     return L.marker(latlng)
-    //     .bindPopup("<h2>" + feature.properties.city + "</h2>");
-    //   }
-    // });
+    // trying to add data to markers. Doesn't like something 
+    L.geoJSON(data, {
+    pointToLayer: function(feature, latlng) {
+        console.log(feature.properties.id);
+        return L.marker(latlng)
+        .bindPopup("<h3> Airport code: " + feature.properties.faa + "<hr>" +
+                    "Airport hame: " + feature.properties.name + "</h3>").addTo(map);
+      }
+    });
 
-  // Creating a GeoJSON layer with the retrieved data.
-  L.geoJSON(data).addTo(map);
 });
+
+    
+
