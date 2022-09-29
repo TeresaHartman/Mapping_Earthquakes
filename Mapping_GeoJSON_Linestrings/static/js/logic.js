@@ -47,19 +47,26 @@ L.control.layers(baseMaps).addTo(map);
 // Accessing the airport GeoJSON URL
 let airportData = "https://raw.githubusercontent.com/TeresaHartman/Mapping_Earthquakes/Mapping_GeoJSON_Points/Mapping_GeoJSON/majorAirports.json";
 
+// Accessing the Toronto airline routes GeoJSON URL.
+let torontoData = "https://raw.githubusercontent.com/TeresaHartman/Mapping_Earthquakes/Mapping_GeoJSON_Linestrings/Mapping_GeoJSON_Linestrings/torontoRoutes.json";
+
 // Grabbing our GeoJSON data.
-d3.json(airportData).then(function(data) {
+d3.json(torontoData).then(function(data) {
     console.log(data);
     
+    // Creating a GeoJSON layer with the retrieved data.
+    L.geoJSON(data).addTo(map);
     
-    // trying to add data to markers. Doesn't like something 
-    L.geoJSON(data, {
-    pointToLayer: function(feature, latlng) {
-        console.log(feature.properties.id);
-        return L.marker(latlng)
-        .bindPopup("<h3> Airport code: " + feature.properties.faa + "<hr>" +
-                    "Airport hame: " + feature.properties.name + "</h3>").addTo(map);
-      }
-    });
+    
+    // // trying to add data to markers. Doesn't like something 
+    // L.geoJSON(data, {
+    
+    //     pointToLayer: function(feature, latlng) {
+    //     console.log(feature.properties.id);
+    //     return L.marker(latlng)
+    //     .bindPopup("<h3> Airport code: " + feature.properties.faa + "<hr>" +
+    //                 "Airport hame: " + feature.properties.name + "</h3>").addTo(map);
+    //   }
+    // });
 
 });
