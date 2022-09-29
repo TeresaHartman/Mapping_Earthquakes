@@ -40,9 +40,9 @@ L.geoJSON(sanFranAirport, {
     pointToLayer: function(feature, latlng) {
       console.log(feature);
       return L.marker(latlng)
-      .bindPopup("<h2>" + feature.properties.city + "</h2>")
+      .bindPopup("<h2>" + feature.properties.name + "</h4><hr>" +
+        "<h4>" + feature.properties.city +", "  + feature.properties.country + "</h4>")
     }
-
   }).addTo(map);
 
 
@@ -50,7 +50,7 @@ L.geoJSON(sanFranAirport, {
 let streets = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 attribution: 'Map data © <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
-    id: 'mapbox/streets-v11',
+    id: 'mapbox/navigation-preview-night-v4',
     // To change the map's style, change the map id using the list of Mapbox ids below:
         // mapbox/streets-v11
         // mapbox/outdoors-v11
